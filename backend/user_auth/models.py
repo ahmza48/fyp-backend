@@ -8,9 +8,6 @@ class User(models.Model):
     password = models.CharField(max_length=255)  # Hashed password will be stored
     first_name = models.CharField(max_length=255,blank=False)
     last_name = models.CharField(max_length=255,blank=False)
-    # is_active = models.BooleanField(default=True)
-    # is_staff = models.BooleanField(default=False)
-    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
@@ -40,13 +37,13 @@ class User(models.Model):
     def check_password(self, raw_password):
         return check_password(raw_password, self.password)
 
-    @staticmethod
-    def create_user(email, password, first_name, last_name):
-        user = User(
-            email=email,
-            first_name=first_name,
-            last_name=last_name
-        )
-        user.set_password(password)
-        user.save()
-        return user
+    # @staticmethod
+    # def create_user(email, password, first_name, last_name):
+    #     user = User(
+    #         email=email,
+    #         first_name=first_name,
+    #         last_name=last_name
+    #     )
+    #     user.set_password(password)
+    #     user.save()
+    #     return user
